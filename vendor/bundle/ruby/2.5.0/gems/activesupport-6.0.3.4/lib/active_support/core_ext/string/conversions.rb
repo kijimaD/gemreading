@@ -1,3 +1,4 @@
+# coding: utf-8
 # frozen_string_literal: true
 
 require "date"
@@ -23,7 +24,7 @@ class String
     used_keys = %i(year mon mday hour min sec sec_fraction offset)
     return if (parts.keys & used_keys).empty?
 
-    now = Time.now
+    now = Time.now              # なんでnowが必要なんだろう。指定されてない場合に埋めるためか！日付だけ入れると時刻は0が入れられる。時刻だけいれると今の日付。よくできてる！
     time = Time.new(
       parts.fetch(:year, now.year),
       parts.fetch(:mon, now.month),

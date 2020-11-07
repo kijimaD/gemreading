@@ -1,5 +1,7 @@
 
-sample.rb,0
+sample.rb,54
+class StringString6,81
+  def to1(position)to17,94
 
 vendor/bundle/ruby/2.5.0/gems/minitest-5.14.2/design_rationale.rb,314
 class ThingySpec < Minitest::SpecThingySpec29,1512
@@ -18246,11 +18248,11 @@ module ActiveSupport #:nodoc:ActiveSupport134,5356
 class StringString306,10773
   def html_safehtml_safe312,11153
 
-vendor/bundle/ruby/2.5.0/gems/activesupport-6.0.3.4/lib/active_support/core_ext/string/conversions.rb,137
-class StringString6,99
-  def to_time(form = :local)to_time21,909
-  def to_dateto_date46,1711
-  def to_datetimeto_datetime56,2127
+vendor/bundle/ruby/2.5.0/gems/activesupport-6.0.3.4/lib/active_support/core_ext/string/conversions.rb,138
+class StringString7,115
+  def to_time(form = :local)to_time22,925
+  def to_dateto_date47,1948
+  def to_datetimeto_datetime57,2364
 
 vendor/bundle/ruby/2.5.0/gems/activesupport-6.0.3.4/lib/active_support/core_ext/string/inquiry.rb,54
 class StringString5,73
@@ -18273,18 +18275,18 @@ class StringString6,130
   def in_time_zone(zone = ::Time.zone)in_time_zone9,302
 
 vendor/bundle/ruby/2.5.0/gems/activesupport-6.0.3.4/lib/active_support/core_ext/string/filters.rb,366
-class StringString3,31
-  def squishsquish13,431
-  def squish!squish!21,685
-  def remove(*patterns)remove32,1028
-  def remove!(*patterns)remove!40,1288
-  def truncate(truncate_at, options = {})truncate66,2234
-  def truncate_bytes(truncate_at, omission: "…")truncate_bytes95,3426
-  def truncate_words(words_count, options = {})truncate_words136,4804
+class StringString4,47
+  def squishsquish14,447
+  def squish!squish!22,701
+  def remove(*patterns)remove33,1044
+  def remove!(*patterns)remove!41,1304
+  def truncate(truncate_at, options = {})truncate67,2250
+  def truncate_bytes(truncate_at, omission: "…")truncate_bytes97,3771
+  def truncate_words(words_count, options = {})truncate_words138,5370
 
 vendor/bundle/ruby/2.5.0/gems/activesupport-6.0.3.4/lib/active_support/core_ext/string/behavior.rb,73
-class StringString3,31
-  def acts_like_string?acts_like_string?5,141
+class StringString4,47
+  def acts_like_string?acts_like_string?7,189
 
 vendor/bundle/ruby/2.5.0/gems/activesupport-6.0.3.4/lib/active_support/core_ext/uri.rb,116
     def unescape(str, escaped = /%[a-fA-F\d]{2}/)unescape9,204

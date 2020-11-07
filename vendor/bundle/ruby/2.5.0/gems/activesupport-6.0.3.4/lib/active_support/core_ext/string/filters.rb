@@ -1,3 +1,4 @@
+# coding: utf-8
 # frozen_string_literal: true
 
 class String
@@ -68,12 +69,13 @@ class String
 
     omission = options[:omission] || "..."
     length_with_room_for_omission = truncate_at - omission.length
+    # ↓この書き方便利そう。
     stop = \
       if options[:separator]
-        rindex(options[:separator], length_with_room_for_omission) || length_with_room_for_omission
+        rindex(options[:separator], length_with_room_for_omission) || length_with_room_for_omission # rindexはどうやって値を受け取っている？ selfは値にアクセスできるな…自動でselfになるようにしている？
       else
         length_with_room_for_omission
-      end
+      end                       # 最後の位置を求める。separatorがついてたら単語の途中とか変な場所で...にならなくなる。
 
     +"#{self[0, stop]}#{omission}"
   end
@@ -96,7 +98,7 @@ class String
     omission ||= ""
 
     case
-    when bytesize <= truncate_at
+    when bytesize <= truncate_at # 自動でselfを対象にしているのはどうやってる？↑にもあったな。
       dup
     when omission.bytesize > truncate_at
       raise ArgumentError, "Omission #{omission.inspect} is #{omission.bytesize}, larger than the truncation length of #{truncate_at} bytes"
@@ -104,9 +106,9 @@ class String
       omission.dup
     else
       self.class.new.tap do |cut|
-        cut_at = truncate_at - omission.bytesize
+        cut_at = truncate_at - omission.bytesize # 省略文字を考慮に入れた、実際に入るバイト数。
 
-        scan(/\X/) do |grapheme|
+        scan(/\X/) do |grapheme| # 1文字ずつ入れていってバイト数をチェック
           if cut.bytesize + grapheme.bytesize <= cut_at
             cut << grapheme
           else
@@ -134,9 +136,10 @@ class String
   #   'And they found that many people were sleeping better.'.truncate_words(5, omission: '... (continued)')
   #   # => "And they found that many... (continued)"
   def truncate_words(words_count, options = {})
+  binding.pry
     sep = options[:separator] || /\s+/
-    sep = Regexp.escape(sep.to_s) unless Regexp === sep
-    if self =~ /\A((?>.+?#{sep}){#{words_count - 1}}.+?)#{sep}.*/m
+    sep = Regexp.escape(sep.to_s) unless Regexp === sep # to_sメソッドにstepが入った。なるほどこういう風になってるのか…オブジェクトごとに違うメソッドを適用している。
+    if self =~ /\A((?>.+?#{sep}){#{words_count - 1}}.+?)#{sep}.*/m # よくわからないが…検索と抽出($1)を同時にやってんだろうな。
       $1 + (options[:omission] || "...")
     else
       dup
